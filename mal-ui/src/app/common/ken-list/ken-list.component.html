@@ -1,7 +1,0 @@
-<!--<select id="{{id_and_name}}"  name="{{id_and_name}}" [(ngModel)]="my_value">-->
-<select id="{{id_and_name}}"  name="{{id_and_name}}">
-    <option disabled="disabled" [value]="undefined">選択してください</option>
-    <option *ngFor="let disp_row of disp_list" value="{{disp_row.id}}">
-          {{disp_row.name}}
-    </option>
-</select>
