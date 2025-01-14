@@ -1,0 +1,24 @@
+<h1>Users</h1>
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+	<button type="button" (click)="onAddButton()">追加</button>
+	<button type="submit">確定</button>
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<tr *ngFor="let user of users">
+			<td>{{user.id}}</td>
+			<td><input type="text" style="font-size: 16px;" value="{{user.name}}" name="name{{user.id}}" [(ngModel)]="user.name" ></td>
+			<td><input type="text" style="font-size: 16px;" value="{{user.email}}" name="email{{user.id}}" [(ngModel)]="user.email"></td>
+			<td><button type="button" routerLink="/users/{{user.id}}/edit" [disabled]="user.newflag">編集</button></td>
+			<td><button type="button" (click)="onDelButton(user.id)">削除</button></td>
+
+			<input type="hidden" name="id{{user.id}}" [(ngModel)]="user.id">
+			<input type="hidden" name="newflag{{user.id}}" [(ngModel)]="user.newflag">
+		</tr>
+	</table>
+</form>

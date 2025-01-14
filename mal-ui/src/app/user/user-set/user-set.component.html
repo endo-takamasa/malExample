@@ -1,0 +1,41 @@
+<form #f="ngForm" (ngSubmit)="onSubmit(f.value)" >
+<!--<form #f="ngForm" (ngSubmit)="onSubmit(f.value)"  [formGroup]="testForm"></form>-->
+	<table>
+		<input type="hidden" name="id" [(ngModel)]="my_profile.id">
+		<tr>
+			<th>都道府県</th>
+			<td>
+<!--
+		<select id="ken_list"  name="ken" [(ngModel)]="my_profile.ken">
+			<option disabled="disabled" [value]="undefined">選択してください</option>
+			<option *ngFor="let ken of kens" value="{{ken.id}}">
+  				{{ken.name}}
+			</option>
+		</select>
+-->
+				<!-- 共通パーツで表示 -->
+				<app-ken-list [master_no]="'106'" [id_and_name]="'ken'" [(ngModel)]="my_profile.ken"></app-ken-list>
+			</td>
+		</tr>
+<!-- ------------------------- -->
+<tr>
+	<th>市町区村</th>
+	<td>
+		<!-- 共通パーツで表示 -->
+		<app-ken-list [master_no]="'107'" [id_and_name]="'sityou'"></app-ken-list>
+	</td>
+</tr>
+<!-- ------------------------- -->
+		
+		<tr>
+			<th>名前</th>
+ 			<td><input type="text" name="name" [(ngModel)]="my_profile.name"></td>
+        </tr>
+		<tr>
+			<th>パスワード</th>
+            <td><input type="text" name="pass" [(ngModel)]="my_profile.pass"></td>
+        </tr>
+	</table>
+	<button type="submit">OK</button>
+	<font color="red">{{comp_msg}}</font>
+</form>
